@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -111,6 +111,36 @@
             gap: 8px;
         }
         .buy-btn:hover { background-color: #16a085; }
+
+        /* تصميم نافذة التنبيه الجذابة والمخصصة */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .custom-alert {
+            background-color: #1e293b;
+            border: 2px solid #1abc9c;
+            border-radius: 16px;
+            padding: 30px; width: 90%; max-width: 400px;
+            text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: scale(0.8); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .custom-alert { transform: scale(1); }
+
+        .custom-alert h3 { color: #1abc9c; font-size: 22px; margin: 0 0 15px 0; }
+        .custom-alert p { color: #cbd5e1; font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
+        .close-alert-btn {
+            background-color: #1abc9c; color: white; border: none;
+            padding: 10px 30px; border-radius: 8px; font-weight: bold;
+            cursor: pointer; font-size: 15px; transition: background 0.3s;
+        }
+        .close-alert-btn:hover { background-color: #16a085; }
     </style>
 </head>
 <body>
@@ -133,7 +163,7 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="price">50 ر.س</div>
-                    <button class="buy-btn" onclick="confirmPurchase('رواية أرض زيكولا')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                    <button class="buy-btn" onclick="showPurchaseModal('رواية أرض زيكولا')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
 
@@ -146,7 +176,7 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="price">75 ر.س</div>
-                    <button class="buy-btn" onclick="confirmPurchase('الأب الغني والأب الفقير')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                    <button class="buy-btn" onclick="showPurchaseModal('الأب الغني والأب الفقير')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
 
@@ -159,7 +189,7 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="price">90 ر.س</div>
-                    <button class="buy-btn" onclick="confirmPurchase('مبادئ البرمجة بـ C#')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                    <button class="buy-btn" onclick="showPurchaseModal('مبادئ البرمجة بـ C#')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
 
@@ -172,7 +202,7 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="price">60 ر.س</div>
-                    <button class="buy-btn" onclick="confirmPurchase('عادات الذات الناجحة')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                    <button class="buy-btn" onclick="showPurchaseModal('عادات الذات الناجحة')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
 
@@ -185,17 +215,33 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="price">110 ر.س</div>
-                    <button class="buy-btn" onclick="confirmPurchase('مقدمة في علم البيانات')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                    <button class="buy-btn" onclick="showPurchaseModal('مقدمة في علم البيانات')"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- نافذة التنبيه المخصصة للموقع -->
+    <div class="modal-overlay" id="customAlertOverlay">
+        <div class="custom-alert">
+            <h3 id="alertTitle">مكتبة أسدية 🦁</h3>
+            <p id="alertMessage"></p>
+            <button class="close-alert-btn" onclick="closeModal()">حسناً</button>
+        </div>
+    </div>
+
     <script>
-        function confirmPurchase(bookName) {
-            alert("🎉 تم الشراء بنجاح لـ: (" + bookName + ") شكراً لتسوقك من مكتبة أسدية!");
+        function showPurchaseModal(bookName) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const message = document.getElementById('alertMessage');
+            message.innerHTML = "🎉 تم الشراء بنجاح لـ:<br><strong>(" + bookName + ")</strong><br>شكراً لتسوقك من مكتبة أسدية!";
+            overlay.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('customAlertOverlay').classList.remove('active');
         }
     </script>
 </body>
 </html>
-
+       
