@@ -10,6 +10,140 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #1a252f;
+            overflow: hidden; /* يمنع التمرير الزائد لتظل الشاشة ثابتة ومريحة */
+        }
+
+        /* هيدر بسيط بدون قائمة مكررة */
+        header {
+            background-color: #1a252f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1abc9c;
+            margin: 0;
+        }
+
+        /* خلفية كامل الشاشة والأزرار في المنتصف */
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.85)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: calc(100vh - 71px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #1abc9c;
+            font-weight: 600;
+        }
+
+        /* قائمة الأيقونات العمودية النظيفة */
+        .icon-navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .nav-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-card i {
+            font-size: 32px;
+            color: #1abc9c;
+        }
+
+        .nav-card span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* تأثير الحركة عند التمرير بالماوس أو الضغط */
+        .nav-card:hover {
+            background-color: #1abc9c;
+            border-color: #1abc9c;
+            transform: translateY(-2px);
+        }
+
+        .nav-card:hover i {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر نظيف بدون روابط مكررة -->
+    <header>
+        <h1 class="logo">مكتبة أسدية 🦁</h1>
+    </header>
+
+    <!-- شاشة التحكم الرئيسية -->
+    <section class="hero">
+        <h1>أقسام المكتبة</h1>
+        
+        <div class="icon-navigation">
+            <a href="buy.html" class="nav-card">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>كتب للبيع</span>
+            </a>
+            
+            <a href="rent.html" class="nav-card">
+                <i class="fa-solid fa-book-reader"></i>
+                <span>كتب للاستعارة</span>
+            </a>
+
+            <a href="reports.html" class="nav-card">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>نظام التقارير</span>
+            </a>
+            
+            <a href="contact.html" class="nav-card">
+                <i class="fa-solid fa-envelope"></i>
+                <span>تواصل معنا</span>
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة أسدية | الرئيسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f7f9fa;
             overflow: hidden; /* لمنع التمرير لأن الصفحة لوحة تحكم ثابتة */
         }
