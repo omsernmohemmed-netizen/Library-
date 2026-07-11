@@ -121,6 +121,36 @@
             gap: 8px;
         }
         .rent-btn:hover { background-color: #16a085; }
+
+        /* تصميم نافذة التنبيه الجذابة والمخصصة */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .custom-alert {
+            background-color: #1e293b;
+            border: 2px solid #1abc9c;
+            border-radius: 16px;
+            padding: 30px; width: 90%; max-width: 400px;
+            text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: scale(0.8); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .custom-alert { transform: scale(1); }
+
+        .custom-alert h3 { color: #1abc9c; font-size: 22px; margin: 0 0 15px 0; }
+        .custom-alert p { color: #cbd5e1; font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
+        .close-alert-btn {
+            background-color: #1abc9c; color: white; border: none;
+            padding: 10px 30px; border-radius: 8px; font-weight: bold;
+            cursor: pointer; font-size: 15px; transition: background 0.3s;
+        }
+        .close-alert-btn:hover { background-color: #16a085; }
     </style>
 </head>
 <body>
@@ -143,7 +173,7 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="duration"><i class="fa-regular fa-clock"></i> استعارة: 14 يوم</div>
-                    <button class="rent-btn" onclick="confirmRent('مقدمة ابن خلدون')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                    <button class="rent-btn" onclick="showRentModal('مقدمة ابن خلدون')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
 
@@ -156,11 +186,11 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="duration"><i class="fa-regular fa-clock"></i> استعارة: 7 أيام</div>
-                    <button class="rent-btn" onclick="confirmRent('رواية أنتِخريستوس')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                    <button class="rent-btn" onclick="showRentModal('رواية أنتِخريستوس')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
 
-            <!-- كتاب 3 -->
+            <!--... بقية الكتب الـ 5 المضافة مسبقاً ...-->
             <div class="book-card">
                 <div style="width: 100%;">
                     <div class="book-icon-box"><i class="fa-solid fa-compass"></i></div>
@@ -169,11 +199,10 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="duration"><i class="fa-regular fa-clock"></i> استعارة: 10 أيام</div>
-                    <button class="rent-btn" onclick="confirmRent('تاريخ موجز للزمن')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                    <button class="rent-btn" onclick="showRentModal('تاريخ موجز للزمن')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
 
-            <!-- كتاب 4 -->
             <div class="book-card">
                 <div style="width: 100%;">
                     <div class="book-icon-box"><i class="fa-solid fa-feather"></i></div>
@@ -182,11 +211,10 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="duration"><i class="fa-regular fa-clock"></i> استعارة: 14 يوم</div>
-                    <button class="rent-btn" onclick="confirmRent('رواية في قلبي أنثى عبرية')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                    <button class="rent-btn" onclick="showRentModal('رواية في قلبي أنثى عبرية')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
 
-            <!-- كتاب 5 -->
             <div class="book-card">
                 <div style="width: 100%;">
                     <div class="book-icon-box"><i class="fa-solid fa-chart-line"></i></div>
@@ -195,17 +223,38 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="duration"><i class="fa-regular fa-clock"></i> استعارة: 21 يوم</div>
-                    <button class="rent-btn" onclick="confirmRent('قوة العقل الباطن')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                    <button class="rent-btn" onclick="showRentModal('قوة العقل الباطن')"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- نافذة التنبيه المخصصة للموقع -->
+    <div class="modal-overlay" id="customAlertOverlay">
+        <div class="custom-alert">
+            <h3 id="alertTitle">مكتبة أسدية 🦁</h3>
+            <p id="alertMessage"></p>
+            <button class="close-alert-btn" onclick="closeModal()">حسناً</button>
+        </div>
+    </div>
+
     <script>
-        function confirmRent(bookName) {
-            alert("📚 تم طلب استعارة: (" + bookName + ") بنجاح! يرجى استلامه من المكتبة.");
+        function showRentModal(bookName) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const message = document.getElementById('alertMessage');
+            message.innerHTML = "📚 تم طلب استعارة:<br><strong>(" + bookName + ")</strong> بنجاح!<br>يرجى استلامه من مقر المكتبة.";
+            overlay.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('customAlertOverlay').classList.remove('active');
         }
     </script>
 </body>
 </html>
 
+
+
+        
+
+                            
