@@ -6,164 +6,187 @@
     <title>مكتبة أسدية | كتب للبيع</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body {
-            background: linear-gradient(135px, #0f172a, #1e293b);
-            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a252f;
+            color: #fff;
             min-height: 100vh;
-            padding: 30px 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        /* زر العودة للرئيسية */
-        .back-btn {
+
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.92), rgba(26, 37, 47, 0.92)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* زر الرجوع للرئيسية الفخم */
+        .back-link {
+            align-self: flex-start;
+            color: #1abc9c;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: #1abc9c;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s;
-            margin-bottom: 30px;
+            transition: transform 0.3s;
         }
-        .back-btn:hover {
-            background: #1abc9c;
-            color: #fff;
+        .back-link:hover {
             transform: translateX(5px);
+            color: #fff;
         }
 
-        h1 { text-align: center; color: #1abc9c; margin-bottom: 10px; font-size: 32px; }
-        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
-
-        /* شبكة عرض الكتب */
-        .books-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-        }
-
-        /* كرت الكتاب الزجاجي الفخم */
-        .book-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            width: 280px;
-            padding: 20px;
+        h1 {
+            font-size: 30px;
+            color: #1abc9c;
+            margin-bottom: 10px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* حاوية الكتب الأفقية المتناسقة مع الرئيسية */
+        .books-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            flex-wrap: wrap;
+        }
+
+        /* كرت الكتاب بنفس نمط كروت الصفحة الرئيسية */
+        .book-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            width: 240px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
         .book-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(26, 188, 156, 0.4);
-            box-shadow: 0 15px 30px rgba(26, 188, 156, 0.1);
+            border-color: #1abc9c;
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.12);
         }
 
-        /* غلاف الكتاب التجميلي */
-        .book-cover {
+        /* صندوق الصورة (الأيقونة) ليكون واضح عديل */
+        .book-icon-box {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(45px, #1a252f, #2c3e50);
-            border-radius: 12px;
+            height: 140px;
+            background-color: rgba(26, 188, 156, 0.1);
+            border: 1px solid rgba(26, 188, 156, 0.2);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
-        .book-cover i { font-size: 60px; color: #1abc9c; }
+        .book-icon-box i {
+            font-size: 50px;
+            color: #1abc9c;
+        }
 
-        .book-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #f8fafc; }
-        .book-author { font-size: 14px; color: #94a3b8; margin-bottom: 15px; }
-        
-        .price-tag {
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .price {
             font-size: 20px;
             color: #1abc9c;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
-        .action-btn {
-            background: #1abc9c;
+        /* زر الشراء التفاعلي النظيف */
+        .buy-btn {
+            background-color: #1abc9c;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 10px 0;
             width: 100%;
-            transition: all 0.3s;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-        .action-btn:hover {
-            background: #16a085;
-            box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+        .buy-btn:hover {
+            background-color: #16a085;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- زر الرجوع -->
-        <a href="index.html" class="back-btn">
-            <i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية
-        </a>
+    <section class="hero">
+        <div style="width: 100%; max-width: 1100px;">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية</a>
+        </div>
 
         <h1>قسم الكتب المعروضة للبيع</h1>
         <p class="subtitle">تصفح واشترِ كتبك المفضلة فوراً وبأفضل الأسعار</p>
 
-        <div class="books-grid">
+        <div class="books-container">
             <!-- كتاب 1 -->
             <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-book-open"></i></div>
+                <div style="width: 100%;">
+                    <div class="book-icon-box"><i class="fa-solid fa-book"></i></div>
                     <div class="book-title">رواية أرض زيكولا</div>
                     <div class="book-author">عمرو عبد الحميد</div>
                 </div>
-                <div>
-                    <div class="price-tag">50 ر.س</div>
-                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                <div style="width: 100%;">
+                    <div class="price">50 ر.س</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
 
             <!-- كتاب 2 -->
             <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-brain"></i></div>
+                <div style="width: 100%;">
+                    <div class="book-icon-box"><i class="fa-solid fa-brain"></i></div>
                     <div class="book-title">الأب الغني والأب الفقير</div>
                     <div class="book-author">روبرت كيوساكي</div>
                 </div>
-                <div>
-                    <div class="price-tag">75 ر.س</div>
-                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
-                </div>
-            </div>
-
-            <!-- كتاب 3 -->
-            <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-code"></i></div>
-                    <div class="book-title">مبادئ البرمجة بـ C#</div>
-                    <div class="book-author">قسم الحاسب الآلي</div>
-                </div>
-                <div>
-                    <div class="price-tag">90 ر.س</div>
-                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                <div style="width: 100%;">
+                    <div class="price">75 ر.س</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 </body>
 </html>
