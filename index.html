@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة أسدية | للبيع واستعارة الكتب</title>
+    <style>
+        /* تنسيقات عامة */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fa;
+            color: #333;
+        }
+
+        /* الهيدر والقائمة */
+        header {
+            background-color: #1a252f;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1abc9c;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1abc9c;
+        }
+
+        /* القسم الرئيسي (البانر) */
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.8)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        /* أقسام الكتب */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            color: #1a252f;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #1abc9c;
+            margin: 10px auto 0;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* كرت الكتاب */
+        .book-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .book-info {
+            padding: 15px;
+        }
+
+        .book-title {
+            font-size: 18px;
+            margin: 10px 0 5px;
+            color: #2c3e50;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .rent-badge {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: block;
+            width: 80%;
+            margin: 0 auto 15px;
+            padding: 10px;
+            background-color: #1abc9c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #16a085;
+        }
+
+        /* الفوتر (تذييل الصفحة) */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">مكتبة أسدية 🦁</div>
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#buy-section">شراء كتب</a>
+            <a href="#rent-section">استعارة كتب</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <!-- البانر الرئيسي -->
+    <section class="hero">
+        <h1>مرحباً بكم في مكتبة أسدية</h1>
+        <p>بوابتكم المفضلة لعالم المعرفة. نوفر لكم تشكيلة واسعة من الكتب الجاهزة للشراء أو الاستعارة بأسعار مناسبة.</p>
+    </section>
+
+    <div class="container">
+        
+        <!-- قسم كتب للبيع -->
+        <section id="buy-section">
+            <h2 class="section-title">كتب للبيع</h2>
+            <div class="books-grid">
+                
+                <!-- كتاب 1 -->
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="كتاب">
+                    <div class="book-info">
+                        <h3 class="book-title">أساسيات البرمجة</h3>
+                        <p class="book-author">المؤلف: أحمد خالد</p>
+                        <div class="price-badge">السعر: 50.00 SDG</div>
+                        <a href="#" class="btn">شراء الآن</a>
+                    </div>
+                </div>
+
+                <!-- كتاب 2 -->
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="كتاب">
+                    <div class="book-info">
+                        <h3 class="book-title">علم البيانات والذكاء الاصطناعي</h3>
+                        <p class="book-author">المؤلف: د. محمد علي</p>
+                        <div class="price-badge">السعر: 75.00 SDG</div>
+                        <a href="#" class="btn">شراء الآن</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- قسم كتب للاستعارة -->
+        <section id="rent-section">
+            <h2 class="section-title">كتب للاستعارة</h2>
+            <div class="books-grid">
+                
+                <!-- كتاب 3 -->
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="كتاب">
+                    <div class="book-info">
+                        <h3 class="book-title">رواية أرض زيكولا</h3>
+                        <p class="book-author">المؤلف: عمرو عبد الحميد</p>
+                        <div class="rent-badge">الاستعارة: 10.00 SDG / أسبوع</div>
+                        <a href="#" class="btn" style="background-color: #2ecc71;">طلب استعارة</a>
+                    </div>
+                </div>
+
+                <!-- كتاب 4 -->
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="كتاب">
+                    <div class="book-info">
+                        <h3 class="book-title">تاريخ الحضارات القديمة</h3>
+                        <p class="book-author">المؤلف: د. يوسف زيدان</p>
+                        <div class="rent-badge">الاستعارة: 15.00 SDG / أسبوع</div>
+                        <a href="#" class="btn" style="background-color: #2ecc71;">طلب استعارة</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <p>© 2026 مكتبة أسدية. جميع الحقوق محفوظة.</p>
+        <p>للتواصل: info@asadiya-library.com</p>
+    </footer>
+
+</body>
+                      </html>
 
