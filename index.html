@@ -19,23 +19,61 @@
         }
 
         /* الهيدر العلوي */
-        header {
-            background-color: #111a22;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        /* تنسيق الشعار الاحترافي */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #1abc9c;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.logo-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
+}
+
+.logo-icon i {
+    font-size: 22px;
+    color: #fff;
+}
+
+.lion-crown {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 18px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.sub-title {
+    font-size: 11px;
+    color: #1abc9c;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
 
         /* الخلفية الكبيرة للموقع */
         .hero {
@@ -104,11 +142,20 @@
 <body>
 
     <!-- الهيدر العلوي للموقع -->
-    <header>
-        <div class="logo">
-            <span>مكتبة أسدية 🦁</span>
+    <!-- الهيدر المطور مع الشعار الفخم -->
+<header>
+    <div class="logo-container">
+        <div class="logo-icon">
+            <i class="fa-solid fa-book-open"></i>
+            <span class="lion-crown">🦁</span>
         </div>
-    </header>
+        <div class="logo-text">
+            <span class="main-title">مَكْتَبَة أَسَدِيَّة</span>
+            <span class="sub-title">عرين المعرفة والثقافة</span>
+        </div>
+    </div>
+</header>
+
 
     <!-- منطقة المحتوى البصرية -->
     <section class="hero">
