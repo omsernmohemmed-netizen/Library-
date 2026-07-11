@@ -1,176 +1,159 @@
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة أسدية | إرسال استفسار</title>
-    <!-- استدعاء الأيقونات -->
+    <title>مكتبة أسدية | تواصل معنا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f9fa;
-            color: #333;
-        }
-
-        header {
             background-color: #1a252f;
             color: #fff;
-            padding: 15px 20px;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.93), rgba(26, 37, 47, 0.93)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
 
-        header .logo {
-            font-size: 24px;
+        .back-link {
+            align-self: flex-start;
+            color: #1abc9c;
+            text-decoration: none;
+            font-size: 16px;
             font-weight: bold;
-            color: #1abc9c;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s;
+        }
+        .back-link:hover {
+            transform: translateX(5px);
+            color: #fff;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
+        h1 { font-size: 32px; color: #1abc9c; margin-bottom: 10px; text-align: center; }
+        .subtitle { color: #cbd5e1; margin-bottom: 35px; text-align: center; font-size: 16px; }
 
-        .contact-box {
-            background-color: #fff;
+        /* حاوية الفورم الجذابة المظلمة */
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(5px);
+            box-sizing: border-box;
         }
 
-        .contact-box h2 {
-            text-align: center;
-            color: #1a252f;
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
-
-        .contact-box h2 i {
-            color: #1abc9c;
-            margin-left: 10px;
-        }
-
-        /* تنسيق حقول الإدخال */
         .form-group {
             margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 15px;
+            color: #cbd5e1;
+            font-weight: 600;
         }
 
-        .form-control {
-            width: 100%;
+        .form-group input, .form-group select, .form-group textarea {
+            background-color: rgba(26, 37, 47, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
+            color: #fff;
             font-family: inherit;
-            font-size: 15px;
+            font-size: 14px;
+            outline: none;
             transition: border-color 0.3s;
         }
 
-        .form-control:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #1abc9c;
-            outline: none;
         }
 
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* زر الإرسال والرجوع */
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
+        .submit-btn {
             background-color: #1abc9c;
             color: white;
             border: none;
-            border-radius: 6px;
+            padding: 12px 0;
+            width: 100%;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
         }
 
-        .btn-submit:hover {
-            background-color: #16a085;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #7f8c8d;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .back-link:hover {
-            color: #1abc9c;
-        }
+        .submit-btn:hover { background-color: #16a085; }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر -->
-    <header>
-        <div class="logo">مكتبة أسدية 🦁</div>
-    </header>
+    <section class="hero">
+        <div style="width: 100%; max-width: 500px;">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية</a>
+        </div>
 
-    <div class="container">
-        <div class="contact-box">
-            <h2><i class="fa-solid fa-comments"></i> أرسل استفسارك</h2>
-            
-            <form action="#" method="POST">
-                <!-- الإسم -->
+        <h1>أرسل استفسارك <i class="fa-solid fa-comments" style="color: #1abc9c;"></i></h1>
+        <p class="subtitle">نحن هنا للإجابة على جميع أسئلتك في أي وقت</p>
+
+        <div class="contact-card">
+            <form onsubmit="event.preventDefault(); alert('🎉 تم إرسال رسالتك بنجاح! وسنتواصل معك قريباً.');">
+                
+                <!-- الاسم الكرت -->
                 <div class="form-group">
-                    <label for="name">الاسم الكامل:</label>
-                    <input type="text" id="name" class="form-control" placeholder="أدخل اسمك الكريم" required>
+                    <label>الاسم الكامل:</label>
+                    <input type="text" placeholder="أدخل اسمك الكريم" required>
                 </div>
 
-                <!-- الإيميل أو رقم الهاتف -->
+                <!-- البريد أو الهاتف -->
                 <div class="form-group">
-                    <label for="contact-info">بريدك الإلكتروني أو رقم الهاتف:</label>
-                    <input type="text" id="contact-info" class="form-control" placeholder="من أجل الرد عليك" required>
+                    <label>البريد الإلكتروني أو رقم الهاتف:</label>
+                    <input type="text" placeholder="لنتمكن من الرد عليك" required>
                 </div>
 
                 <!-- نوع الاستفسار -->
                 <div class="form-group">
-                    <label for="subject">نوع الاستفسار:</label>
-                    <select id="subject" class="form-control">
-                        <option value="general">استفسار عام</option>
-                        <option value="buy">بخصوص شراء كتاب</option>
-                        <option value="rent">بخصوص استعارة كتاب</option>
-                        <option value="suggestion">اقتراح لتطوير المكتبة</option>
+                    <label>نوع الاستفسار:</label>
+                    <select>
+                        <option>استفسار عام</option>
+                        <option>شراء كتب</option>
+                        <option>استعارة كتب</option>
+                        <option>اقتراح للمكتبة</option>
                     </select>
                 </div>
 
-                <!-- نص الرسالة -->
+                <!-- التفاصيل -->
                 <div class="form-group">
-                    <label for="message">تفاصيل الاستفسار:</label>
-                    <textarea id="message" class="form-control" placeholder="اكتب سؤالك أو استفسارك هنا..." required></textarea>
+                    <label>تفاصيل الاستفسار:</label>
+                    <textarea rows="4" placeholder="اكتب سؤالك أو استفسارك هنا..." required></textarea>
                 </div>
 
-                <!-- زر الإرسال -->
-                <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-paper-plane"></i> إرسال الاستفسار
-                </button>
+                <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> إرسال الآن</button>
             </form>
-
-            <!-- زر العودة -->
-            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
         </div>
-    </div>
+    </section>
 
 </body>
 </html>
+                               
