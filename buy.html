@@ -2,16 +2,168 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>كتب للبيع</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة أسدية | كتب للبيع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; background: #f7f9fa; padding: 40px; text-align: center; }
-        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #1a252f; color: white; text-decoration: none; border-radius: 5px; }
-        /* هنا تضعي تصميم كروت البيع المفضلة لديك */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background: linear-gradient(135px, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* زر العودة للرئيسية */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: #1abc9c;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+        .back-btn:hover {
+            background: #1abc9c;
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        h1 { text-align: center; color: #1abc9c; margin-bottom: 10px; font-size: 32px; }
+        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
+
+        /* شبكة عرض الكتب */
+        .books-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        /* كرت الكتاب الزجاجي الفخم */
+        .book-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .book-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(26, 188, 156, 0.4);
+            box-shadow: 0 15px 30px rgba(26, 188, 156, 0.1);
+        }
+
+        /* غلاف الكتاب التجميلي */
+        .book-cover {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(45px, #1a252f, #2c3e50);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .book-cover i { font-size: 60px; color: #1abc9c; }
+
+        .book-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #f8fafc; }
+        .book-author { font-size: 14px; color: #94a3b8; margin-bottom: 15px; }
+        
+        .price-tag {
+            font-size: 20px;
+            color: #1abc9c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .action-btn {
+            background: #1abc9c;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .action-btn:hover {
+            background: #16a085;
+            box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-btn">الرجوع للرئيسية</a>
-    <h1>قسم الكتب المعروضة للبيع</h1>
-    <p>هنا تظهر قائمة الكتب المتاحة للشراء المباشر...</p>
+
+    <div class="container">
+        <!-- زر الرجوع -->
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية
+        </a>
+
+        <h1>قسم الكتب المعروضة للبيع</h1>
+        <p class="subtitle">تصفح واشترِ كتبك المفضلة فوراً وبأفضل الأسعار</p>
+
+        <div class="books-grid">
+            <!-- كتاب 1 -->
+            <div class="book-card">
+                <div>
+                    <div class="book-cover"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="book-title">رواية أرض زيكولا</div>
+                    <div class="book-author">عمرو عبد الحميد</div>
+                </div>
+                <div>
+                    <div class="price-tag">50 ر.س</div>
+                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- كتاب 2 -->
+            <div class="book-card">
+                <div>
+                    <div class="book-cover"><i class="fa-solid fa-brain"></i></div>
+                    <div class="book-title">الأب الغني والأب الفقير</div>
+                    <div class="book-author">روبرت كيوساكي</div>
+                </div>
+                <div>
+                    <div class="price-tag">75 ر.س</div>
+                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                </div>
+            </div>
+
+            <!-- كتاب 3 -->
+            <div class="book-card">
+                <div>
+                    <div class="book-cover"><i class="fa-solid fa-code"></i></div>
+                    <div class="book-title">مبادئ البرمجة بـ C#</div>
+                    <div class="book-author">قسم الحاسب الآلي</div>
+                </div>
+                <div>
+                    <div class="price-tag">90 ر.س</div>
+                    <button class="action-btn"><i class="fa-solid fa-cart-shopping"></i> شراء الآن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
