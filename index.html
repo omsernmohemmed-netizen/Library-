@@ -4,6 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مكتبة أسدية | الرئيسية</title>
+    <!-- استدعاء الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            height: 100vh;
+            overflow-x: hidden; /* يمنع التمرير العرضي المزعج */
+        }
+
+        /* خلفية سينمائية فخمة للمكتبة */
+        .main-wrapper {
+            background: linear-gradient(135px, rgba(15, 23, 42, 0.95), rgba(26, 37, 47, 0.85)), 
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* هيدر بسيط ونظيف جداً */
+        header {
+            padding: 30px;
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 34px;
+            font-weight: 800;
+            color: #1abc9c;
+            text-shadow: 0 0 20px rgba(26, 188, 156, 0.3);
+            display: inline-block;
+        }
+
+        /* حاوية المحتوى الوسطى */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .content-area h2 {
+            font-size: 26px;
+            color: #cbd5e1;
+            margin-bottom: 45px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* لوحة التحكم الأفقية (التعديل الأساسي هنا) */
+        .menu-container {
+            display: flex;
+            flex-direction: row; /* التوزيع الأفقي */
+            justify-content: center;
+            align-items: center;
+            gap: 25px; /* مسافة بين الكروت */
+            width: 100%;
+            max-width: 1100px;
+            flex-wrap: wrap; /* عشان ينزل سطر جديد لو الشاشة صغيرة زي الموبايل */
+        }
+
+        /* كرت الزجاج المطور بتصميم أفقي */
+        .luxury-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column; /* العناصر داخل الكرت فوق بعض */
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 220px; /* عرض ثابت لكل كرت ليتناسقوا أفقياً */
+            height: 180px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تفاصيل النص داخل الزر */
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* الدائرة المحيطة بالأيقونة */
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(26, 188, 156, 0.1);
+            border-radius: 50%; /* شكل دائري أنيق */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .icon-wrapper i {
+            font-size: 26px;
+            color: #1abc9c;
+            transition: all 0.4s ease;
+        }
+
+        /* تأثيرات الحركة الرهيبة والتوهج (Hover) */
+        .luxury-card:hover {
+            background: rgba(26, 188, 156, 0.08);
+            border-color: rgba(26, 188, 156, 0.4);
+            transform: translateY(-8px); /* يرتفع لأعلى بحركة تفاعلية */
+            box-shadow: 0 15px 30px rgba(26, 188, 156, 0.2);
+            color: #1abc9c;
+        }
+
+        .luxury-card:hover .icon-wrapper {
+            background: #1abc9c;
+            box-shadow: 0 0 20px rgba(26, 188, 156, 0.6);
+        }
+
+        .luxury-card:hover .icon-wrapper i {
+            color: #fff;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- الهيدر النظيف -->
+        <header>
+            <div class="logo">مكتبة أسدية 🦁</div>
+        </header>
+
+        <!-- منطقة المحتوى الرئيسية -->
+        <div class="content-area">
+            <h2>أقسام المكتبة الرئيسية</h2>
+            
+            <!-- أزرار مصفوفة أفقياً بجاذبية -->
+            <div class="menu-container">
+                
+                <!-- زر كتب للبيع -->
+                <a href="buy.html" class="luxury-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                    <span class="card-title">كتب للبيع</span>
+                </a>
+                
+                <!-- زر كتب للاستعارة -->
+                <a href="rent.html" class="luxury-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-book-reader"></i>
+                    </div>
+                    <span class="card-title">كتب للاستعارة</span>
+                </a>
+
+                <!-- زر نظام التقارير -->
+                <a href="reports.html" class="luxury-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <span class="card-title">نظام التقارير</span>
+                </a>
+                
+                <!-- زر تواصل معنا -->
+                <a href="contact.html" class="luxury-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span class="card-title">استفسارات وتواصل</span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة أسدية | الرئيسية</title>
     <!-- استدعاء أيقونات مودرن -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
