@@ -4,165 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مكتبة أسدية | كتب للاستعارة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link class="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body {
-            background: linear-gradient(135px, #0f172a, #111827);
-            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a252f;
+            color: #fff;
             min-height: 100vh;
-            padding: 30px 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        .back-btn {
+
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.92), rgba(26, 37, 47, 0.92)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-link {
+            align-self: flex-start;
+            color: #1abc9c;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: #3498db;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s;
-            margin-bottom: 30px;
+            transition: transform 0.3s;
         }
-        .back-btn:hover {
-            background: #3498db;
-            color: #fff;
+        .back-link:hover {
             transform: translateX(5px);
+            color: #fff;
         }
 
-        h1 { text-align: center; color: #3498db; margin-bottom: 10px; font-size: 32px; }
-        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
+        h1 {
+            font-size: 30px;
+            color: #1abc9c;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-        .books-grid {
+        .subtitle {
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .books-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            flex-direction: row;
             justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            flex-wrap: wrap;
         }
 
         .book-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            width: 280px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             padding: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s;
+            width: 240px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
         .book-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(52, 152, 219, 0.4);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.15);
+            border-color: #1abc9c;
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.12);
         }
 
-        .book-cover {
+        .book-icon-box {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(45px, #1e293b, #0f172a);
-            border-radius: 12px;
+            height: 140px;
+            background-color: rgba(26, 188, 156, 0.1);
+            border: 1px solid rgba(26, 188, 156, 0.2);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
         }
-        .book-cover i { font-size: 60px; color: #3498db; }
+        .book-icon-box i {
+            font-size: 50px;
+            color: #1abc9c;
+        }
 
-        .book-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #f8fafc; }
-        .book-author { font-size: 14px; color: #94a3b8; margin-bottom: 15px; }
-        
-        .duration-info {
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .book-author {
             font-size: 14px;
-            color: #e2e8f0;
-            background: rgba(52, 152, 219, 0.1);
-            padding: 6px;
-            border-radius: 8px;
+            color: #94a3b8;
             margin-bottom: 15px;
-            border: 1px solid rgba(52, 152, 219, 0.2);
         }
 
-        .action-btn {
-            background: #3498db;
+        .duration {
+            font-size: 14px;
+            color: #cbd5e1;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .rent-btn {
+            background-color: #1abc9c;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 10px 0;
             width: 100%;
-            transition: all 0.3s;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-        .action-btn:hover {
-            background: #2980b9;
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+        .rent-btn:hover {
+            background-color: #16a085;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- زر الرجوع -->
-        <a href="index.html" class="back-btn">
-            <i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية
-        </a>
+    <section class="hero">
+        <div style="width: 100%; max-width: 1100px;">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> الرجوع للرئيسية</a>
+        </div>
 
         <h1>قسم استعارة الكتب</h1>
         <p class="subtitle">اختر كتابك المفضل واستعره للقراءة الأسبوعية أو الشهرية</p>
 
-        <div class="books-grid">
+        <div class="books-container">
             <!-- كتاب 1 -->
             <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-monument"></i></div>
+                <div style="width: 100%;">
+                    <div class="book-icon-box"><i class="fa-solid fa-book-open"></i></div>
                     <div class="book-title">مقدمة ابن خلدون</div>
                     <div class="book-author">ابن خلدون</div>
                 </div>
-                <div>
-                    <div class="duration-info"><i class="fa-regular fa-clock"></i> الاستعارة: حتى 14 يوم</div>
-                    <button class="action-btn"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
-                </div>
-            </div>
-
-            <!-- كتاب 2 -->
-            <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-flask"></i></div>
-                    <div class="book-title">الكون الثقوب السوداء</div>
-                    <div class="book-author">ستيفن هوكينج</div>
-                </div>
-                <div>
-                    <div class="duration-info"><i class="fa-regular fa-clock"></i> الاستعارة: حتى 7 أيام</div>
-                    <button class="action-btn"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
-                </div>
-            </div>
-
-            <!-- كتاب 3 -->
-            <div class="book-card">
-                <div>
-                    <div class="book-cover"><i class="fa-solid fa-gavel"></i></div>
-                    <div class="book-title">قوة العادات</div>
-                    <div class="book-author">تشارلز دويج</div>
-                </div>
-                <div>
-                    <div class="duration-info"><i class="fa-regular fa-clock"></i> الاستعارة: حتى 21 يوم</div>
-                    <button class="action-btn"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
+                <div style="width: 100%;">
+                    <div class="duration"><i class="fa-regular fa-clock"></i> الاستعارة: حتى 14 يوم</div>
+                    <button class="rent-btn"><i class="fa-solid fa-book-reader"></i> طلب استعارة</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 </body>
 </html>
